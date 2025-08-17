@@ -7,14 +7,15 @@ interface UpiInputProps {
 const UpiInput: React.FC<UpiInputProps> = ({ setForm }) => {
   const [mode, setMode] = useState("fixed"); // "fixed" or "custom"
   const [upiId, setUpiId] = useState("");
+  const [name, setName] = useState("U");
   const [amount, setAmount] = useState("");
 
   const handleChange = () => {
     let upiUrl = "";
     if (mode === "fixed" && amount) {
-      upiUrl = `upi://pay?pa=${upiId}&pn=User&am=${amount}&cur=INR`;
+      upiUrl = `upi://pay?pa=${upiId}&pn=${name}&am=${amount}&cur=INR`;
     } else {
-      upiUrl = `upi://pay?pa=${upiId}&pn=User&cur=INR`;
+      upiUrl = `upi://pay?pa=${upiId}&pn=${name}&cur=INR`;
     }
 
     setForm((prev: any) => ({
@@ -49,6 +50,18 @@ const UpiInput: React.FC<UpiInputProps> = ({ setForm }) => {
           onChange={(e) => setUpiId(e.target.value)}
           onBlur={handleChange}
           placeholder="example@upi"
+          className="w-full border rounded-lg px-3 py-2"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium mb-1">UPI ID</label>
+        <input
+          type="text"
+          value={upiId}
+          onChange={(e) => setName(e.target.value)}
+          onBlur={handleChange}
+          placeholder="eg:Kishor"
           className="w-full border rounded-lg px-3 py-2"
         />
       </div>
