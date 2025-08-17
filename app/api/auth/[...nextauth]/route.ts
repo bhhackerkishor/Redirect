@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import connect from "@/utils/db";
 import User from "@/models/User";
 
-// authOptions should be internal, NOT exported
+// authOptions should be internal
 const authOptions = {
   providers: [
     CredentialsProvider({
@@ -45,11 +45,8 @@ const authOptions = {
   },
 };
 
-// Export only route handlers
-export async function GET(req: Request) {
-  return NextAuth(req, authOptions);
-}
+// App Router requires exporting a default handler using NextAuth()
+const handler = NextAuth(authOptions);
 
-export async function POST(req: Request) {
-  return NextAuth(req, authOptions);
-}
+// Wrap in GET and POST to satisfy Next.js route type
+export { handler as GET, handler as POST };
