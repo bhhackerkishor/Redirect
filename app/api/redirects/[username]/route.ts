@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import connect from "@/utils/db"; // your db connection utility
-import Redirect from "@/models/redirect"; // your mongoose model
+import Redirect from "@/models/Redirect"; // your mongoose model
 
 // GET /api/redirects/:username
 export async function GET(
