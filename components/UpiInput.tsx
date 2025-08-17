@@ -89,8 +89,8 @@ const UpiInput: React.FC<UpiInputProps> = ({ form, setForm }) => {
         <p className="font-medium">Preview:</p>
         <p className="break-all text-blue-600">
           {mode === "fixed" && amount
-            ? `upi://pay?pa=${upiId}&pn=User&am=${amount}&cur=INR`
-            : `upi://pay?pa=${upiId}&pn=User&cur=INR`}
+            ? `upi://pay?pa=${upiId}&pn=${name}&am=${amount}&cur=INR`
+            : `upi://pay?pa=${upiId}&pn=${name}&cur=INR`}
         </p>
       </div>
       {/* Note */}
