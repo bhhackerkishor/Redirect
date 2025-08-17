@@ -1,24 +1,35 @@
-# NextJS 14 and NextAuth Boilerplate - Secure and Scalable Authentication for Next.js Applications
+# Qroly
 
-# Overview
-NextAuth Boilerplate is a versatile and customizable authentication solution tailored for Next.js 14, offering a seamless integration. This feature-rich boilerplate not only provides a secure and efficient user authentication process but also acts as a robust foundation for web applications.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+Qroly is a modern QR code redirect platform that allows users to create a personalized QR code which redirects to their chosen social links, UPI payment IDs, or any custom URL. Users can manage links via a dashboard, set a default redirect, and share a single QR code for all purposes.
 
-![login nextauth app](https://github.com/Kuzma02/NextJS14-NextAuth-Login-And-Register/assets/138793624/d415960f-7d12-42dd-995c-af73a5d50b29)
+Live Demo: [https://qroly.in](https://qroly.in) *(replace with actual URL once live)*
 
-![signup nextauthapp](https://github.com/Kuzma02/NextJS14-NextAuth-Login-And-Register/assets/138793624/f2d1ae6c-383b-4fb3-8ff6-6fb3d8e8b608)
+---
 
+## Features
 
-# Key Features
-- Next.js 14 Integration
-- MongoDB and Scalable Data Management: Store user data securely in MongoDB, ensuring scalability and reliability for managing user information.
-- Cutting-Edge Web Development: Harness the latest features of Next.js 14 for building modern and scalable web applications with enhanced developer experiences.
-- Professionality Designed Register and Login Example: Explore a practical example of implementing a secure register and login system with Next.js, with quality professional design.
-- Multi-Provider Support: Seamlessly integrate popular authentication providers such as Google and GitHub with NextAuth, offering users a variety of login options.
-- Extensibility: Customize authentication behavior to fit your specific requirements, whether it's adding new providers, enhancing security measures, or tailoring the user experience.
-- Customizable Login Page: Tailor the login experience to your application's needs with it's flexibility, allowing for the creation of a unique and branded login page.
-- Secure Authentication Flow: Implement a secure authentication flow with ease
-- Easy Configuration: Seamlessly connect your Next.js application to MongoDB by configuring environment variables, making it simple to adapt to your preferred database setup.
+- **Personalized QR Code** – Each user has a unique QR that redirects to their chosen link.
+- **Social Media Links** – Add Instagram, Facebook, Twitter, LinkedIn, YouTube, and more.
+- **UPI Payment Links** – Add Google Pay, PhonePe, Paytm, or any UPI ID for payments.
+- **Default Redirect** – Set one link as the default when the QR is scanned.
+- **Safe Redirects** – All QR scans pass through Qroly to ensure safe redirection.
+- **User Dashboard** – Manage links, QR codes, and default redirect easily.
+- **Download QR** – QR code is downloadable for offline use.
+- **Responsive UI** – Works smoothly on mobile and desktop.
+
+---
+
+## Tech Stack
+
+- **Frontend:** React, Next.js 13, Tailwind CSS  
+- **Backend:** Next.js API Routes, MongoDB, Mongoose  
+- **Authentication:** NextAuth.js  
+- **QR Code:** `qrcode.react`  
+- **Deployment:** Vercel  
+
+---
 
 # App Router and Redirects
 - With App Router: Utilize App Router to manage authentication-related routes, enabling smooth navigation and user experience.
@@ -47,7 +58,8 @@ NextAuth Boilerplate is a versatile and customizable authentication solution tai
 1. Clone the repository
 
 ```
-git clone https://github.com/Kuzma02/NextJS14-NextAuth-Login-And-Register
+git clone https://github.com/yourusername/qroly.git
+cd qroly
 ```
 
 2. Install dependencies
@@ -75,3 +87,22 @@ GOOGLE_SECRET=
 ```
 npm run dev
 ```
+
+
+Usage:
+```
+1.Sign up / Login
+
+2.Access your Dashboard
+
+3.Add social links and UPI IDs
+
+4.Set your Default Redirect
+
+5.Share your QR Code
+
+Visitors scanning your QR will be redirected to the chosen link safely.
+```
+Contributing
+
+Contributions are welcome! Feel free to open issues or pull requests.
