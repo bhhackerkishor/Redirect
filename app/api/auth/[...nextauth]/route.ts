@@ -1,10 +1,11 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
+import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import connect from "@/utils/db";
 import User from "@/models/User";
 
-export const authOptions: NextAuthOptions = {
+// authOptions should be internal, NOT exported
+const authOptions = {
   providers: [
     CredentialsProvider({
       id: "credentials",
@@ -44,11 +45,11 @@ export const authOptions: NextAuthOptions = {
   },
 };
 
-// Wrap NextAuth in explicit GET/POST handlers
+// Export only route handlers
 export async function GET(req: Request) {
-  return await NextAuth(req, authOptions);
+  return NextAuth(req, authOptions);
 }
 
 export async function POST(req: Request) {
-  return await NextAuth(req, authOptions);
+  return NextAuth(req, authOptions);
 }
