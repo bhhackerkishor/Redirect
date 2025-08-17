@@ -1,77 +1,82 @@
-// components/UpiInput.tsx
-import { useState } from "react";
+// import React, { useState } from "react";
 
-type UpiType = "upiid" | "upiid+amount+currency" | "upiid+amount+currency+payer";
+interface UpiInputProps {
+  setForm: React.Dispatch<React.SetStateAction<any>>;
+}
 
-export default function UpiInput({ form, setForm }: { form: any; setForm: any }) {
-  const [option, setOption] = useState<UpiType>("upiid");
+const UpiInput: React.FC<UpiInputProps> = ({ setForm }) => {
+  const [mode, setMode] = useState("fixed"); // "fixed" or "custom"
+  const [upiId, setUpiId] = useState("");
+  const [amount, setAmount] = useState("");
 
-  const handleChange = (field: string, value: string) => {
+  const handleChange = () => {
+    let upiUrl = "";
+    if (mode === "fixed" && amount) {
+      upiUrl = `upi://pay?pa=${upiId}&pn=User&am=${amount}&cur=INR`;
+    } else {
+      upiUrl = `upi://pay?pa=${upiId}&pn=User&cur=INR`;
+    }
+
     setForm((prev: any) => ({
       ...prev,
-      payment: {
-        ...prev.payment,
-        [field]: value,
-      },
+      payment: { upi: upiUrl },
     }));
   };
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">UPI Setup</h2>
+    <div className="p-4 bg-white rounded-2xl shadow-md space-y-4">
+      <h2 className="text-lg font-semibold">UPI Payment Setup</h2>
 
-      {/* Dropdown selector */}
-      <select
-        value={option}
-        onChange={(e) => setOption(e.target.value as UpiType)}
-        className="border border-gray-300 rounded-lg px-3 py-2 mb-4 w-full"
-      >
-        <option value="upiid">UPI ID Only</option>
-        <option value="upiid+amount+currency">UPI ID + Amount + Currency</option>
-        <option value="upiid+amount+currency+payer">
-          UPI ID + Amount + Currency + Payer Name
-        </option>
-      </select>
+      {/* Dropdown to choose mode */}
+      <div>
+        <label className="block text-sm font-medium mb-1">Mode</label>
+        <select
+          value={mode}
+          onChange={(e) => setMode(e.target.value)}
+          className="w-full border rounded-lg px-3 py-2"
+        >
+          <option value="fixed">Fixed Amount</option>
+          <option value="custom">Custom Amount</option>
+        </select>
+      </div>
 
-      {/* UPI ID */}
-      <input
-        placeholder="example@upi"
-        value={form.payment?.upiid || ""}
-        onChange={(e) => handleChange("upiid", e.target.value)}
-        className="w-full border border-gray-300 rounded-lg px-3 py-2 mb-3"
-      />
+      {/* UPI ID Input */}
+      <div>
+        <label className="block text-sm font-medium mb-1">UPI ID</label>
+        <input
+          type="text"
+          value={upiId}
+          onChange={(e) => setUpiId(e.target.value)}
+          onBlur={handleChange}
+          placeholder="example@upi"
+          className="w-full border rounded-lg px-3 py-2"
+        />
+      </div>
 
-      {/* Conditional Fields */}
-      {(option === "upiid+amount+currency" || option === "upiid+amount+currency+payer") && (
-        <div className="flex gap-2 mb-3">
+      {/* Amount Input (only if mode is fixed) */}
+      {mode === "fixed" && (
+        <div>
+          <label className="block text-sm font-medium mb-1">Amount (₹)</label>
           <input
             type="number"
-            placeholder="Amount"
-            value={form.payment?.amount || ""}
-            onChange={(e) => handleChange("amount", e.target.value)}
-            className="flex-1 border border-gray-300 rounded-lg px-3 py-2"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            onBlur={handleChange}
+            placeholder="Enter amount"
+            className="w-full border rounded-lg px-3 py-2"
           />
-          <select
-            value={form.payment?.currency || "INR"}
-            onChange={(e) => handleChange("currency", e.target.value)}
-            className="border border-gray-300 rounded-lg px-3 py-2"
-          >
-            <option value="INR">INR</option>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-          </select>
         </div>
       )}
 
-      {option === "upiid+amount+currency+payer" && (
-        <input
-          placeholder="Payer Name"
-          value={form.payment?.payer || ""}
-          onChange={(e) => handleChange("payer", e.target.value)}
-          className="w-full border border-gray-300 rounded-lg px-3 py-2 mb-3"
-        />
-      )}
-
+      {/* Preview */}
+      <div className="mt-4 p-3 bg-gray-100 rounded-lg text-sm">
+        <p className="font-medium">Preview:</p>
+        <p className="break-all text-blue-600">
+          {mode === "fixed" && amount
+            ? `upi://pay?pa=${upiId}&pn=User&am=${amount}&cur=INR`
+            : `upi://pay?pa=${upiId}&pn=User&cur=INR`}
+        </p>
+      </div>
       {/* Note */}
       <p className="text-sm text-gray-500 mt-2">
         ⚡ These UPI details work with any payment app that supports UPI transactions
@@ -79,4 +84,6 @@ export default function UpiInput({ form, setForm }: { form: any; setForm: any })
       </p>
     </div>
   );
-}
+};
+
+export default UpiInput;
