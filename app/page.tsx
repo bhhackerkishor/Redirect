@@ -78,7 +78,7 @@ export default function LandingPage() {
                 href="/dashboard" 
                 className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition flex items-center justify-center"
               >
-                Create Your LinkHub <ArrowRight className="w-5 h-5 ml-2" />
+                Create Your Qroly <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
               <Link 
                 href="#how-it-works" 
@@ -97,7 +97,7 @@ export default function LandingPage() {
             <div className="flex justify-center">
               <div className="p-4 bg-white rounded-xl border border-gray-200">
                 <QRCodeCanvas
-                  value={`${process.env.NEXT_PUBLIC_BASE_URL || 'https://linkhub.example'}/r/username`}
+                  value={`${process.env.NEXT_PUBLIC_BASE_URL || 'https://Qroly.example'}/r/username`}
                   size={180}
                   level="H"
                   includeMargin
@@ -107,7 +107,7 @@ export default function LandingPage() {
             <div className="mt-6 space-y-4">
               <div className="flex items-center space-x-3">
                 <User className="w-5 h-5 text-gray-500" />
-                <span className="font-medium">linkhub.example/r/username</span>
+                <span className="font-medium">Qroly.example/r/username</span>
               </div>
               <div className="flex items-center space-x-3">
                 <ArrowRight className="w-5 h-5 text-gray-500" />
@@ -152,7 +152,7 @@ export default function LandingPage() {
         <div className="text-center">
           <h2 className="text-3xl font-bold text-gray-900">Simplify Your Digital Life</h2>
           <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
-            LinkHub replaces all your individual links with one smart, customizable solution.
+            Qroly replaces all your individual links with one smart, customizable solution.
           </p>
         </div>
 
@@ -180,7 +180,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-5">
-              <h2 className="text-3xl font-bold text-gray-900">How LinkHub Works</h2>
+              <h2 className="text-3xl font-bold text-gray-900">How Qroly Works</h2>
               <p className="mt-4 text-lg text-gray-600">
                 Get set up in minutes and start simplifying your online presence today.
               </p>
@@ -236,7 +236,7 @@ export default function LandingPage() {
                   <div className="col-span-2">
                     <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
                       <QRCodeCanvas
-                        value={`${process.env.NEXT_PUBLIC_BASE_URL || 'https://linkhub.example'}/r/username`}
+                        value={`${process.env.NEXT_PUBLIC_BASE_URL || 'https://Qroly.example'}/r/username`}
                         size={200}
                         level="H"
                         includeMargin
@@ -331,10 +331,10 @@ export default function LandingPage() {
           <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center">
               <Globe className="w-6 h-6 text-blue-400" />
-              <span className="ml-2 text-white font-bold">LinkHub</span>
+              <span className="ml-2 text-white font-bold">Qroly</span>
             </div>
             <p className="mt-4 md:mt-0 text-sm">
-              &copy; {new Date().getFullYear()} LinkHub. All rights reserved.
+              &copy; {new Date().getFullYear()} Qroly. All rights reserved.
             </p>
           </div>
         </div>
