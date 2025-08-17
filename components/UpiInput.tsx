@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 
-type RedirectData = {
-  amountType: "fixed" | "custom";
-  amount?: number;
-  upiId: string;
-};
+
 
 type UpiInputProps = {
-  form: RedirectData;
+  form: any;
   setForm: React.Dispatch<React.SetStateAction<RedirectData>>;
 };
 
