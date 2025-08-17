@@ -55,7 +55,7 @@ const UpiInput: React.FC<UpiInputProps> = ({ setForm }) => {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">UPI ID</label>
+        <label className="block text-sm font-medium mb-1">Name</label>
         <input
           type="text"
           value={upiId}
