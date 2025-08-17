@@ -278,7 +278,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white">Ready to Simplify Your Links?</h2>
           <p className="mt-4 text-xl text-blue-100 max-w-3xl mx-auto">
-            Join thousands of users who've made their online presence simpler and more effective.
+            Join thousands of users who&apos;ve made their online presence simpler and more effective.
           </p>
           <div className="mt-8">
             <Link 
