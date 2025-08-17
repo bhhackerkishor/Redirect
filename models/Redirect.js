@@ -25,6 +25,7 @@ const redirectSchema = new Schema(
         gpay: { type: String },
         phonepe: { type: String },
         paytm: { type: String },
+       upi: { type: String },
       },
       custom: [
         {
