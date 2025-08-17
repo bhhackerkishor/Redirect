@@ -58,7 +58,7 @@ const UpiInput: React.FC<UpiInputProps> = ({ setForm }) => {
         <label className="block text-sm font-medium mb-1">Name</label>
         <input
           type="text"
-          value={upiId}
+          value={name}
           onChange={(e) => setName(e.target.value)}
           onBlur={handleChange}
           placeholder="eg:Kishor"
