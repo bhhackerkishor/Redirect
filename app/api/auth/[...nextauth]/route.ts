@@ -1,11 +1,11 @@
-import NextAuth from "next-auth";
+import NextAuth, { AuthOptions, SessionStrategy } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import connect from "@/utils/db";
 import User from "@/models/User";
 
 // authOptions should be internal
-const authOptions = {
+const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
       id: "credentials",
@@ -41,12 +41,12 @@ const authOptions = {
     signIn: "/login",
   },
   session: {
-    strategy: "jwt",
+    strategy: "jwt" as SessionStrategy, // ✅ type assertion
   },
 };
 
+
 // App Router requires exporting a default handler using NextAuth()
 const handler = NextAuth(authOptions);
-
-// Wrap in GET and POST to satisfy Next.js route type
 export { handler as GET, handler as POST };
+
