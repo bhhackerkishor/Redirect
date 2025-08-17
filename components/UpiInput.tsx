@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 
-interface UpiInputProps {
-  setForm: React.Dispatch<React.SetStateAction<any>>;
-}
+type RedirectData = {
+  amountType: "fixed" | "custom";
+  amount?: number;
+  upiId: string;
+};
 
-const UpiInput: React.FC<UpiInputProps> = ({ setForm }) => {
+type UpiInputProps = {
+  form: RedirectData;
+  setForm: React.Dispatch<React.SetStateAction<RedirectData>>;
+};
+
+const UpiInput: React.FC<UpiInputProps> = ({ form, setForm }) => {
   const [mode, setMode] = useState("fixed"); // "fixed" or "custom"
   const [upiId, setUpiId] = useState("");
   const [name, setName] = useState("U");
