@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 type UpiInputProps = {
   form: any;
-  setForm: React.Dispatch<React.SetStateAction<RedirectData>>;
+  setForm: React.Dispatch<React.SetStateAction<any>>;
 };
 
 const UpiInput: React.FC<UpiInputProps> = ({ form, setForm }) => {
