@@ -1,7 +1,7 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import connect  from "@/utils/db";
+import connect from "@/utils/db";
 import User from "@/models/User";
 
 export const authOptions: NextAuthOptions = {
@@ -44,6 +44,11 @@ export const authOptions: NextAuthOptions = {
   },
 };
 
-const handler = NextAuth(authOptions);
+// Wrap NextAuth in explicit GET/POST handlers
+export async function GET(req: Request) {
+  return await NextAuth(req, authOptions);
+}
 
-export { handler as GET, handler as POST };
+export async function POST(req: Request) {
+  return await NextAuth(req, authOptions);
+}
