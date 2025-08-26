@@ -131,7 +131,7 @@ export default function Dashboard() {
         {/* QR Code Section */}
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
           <div className="flex flex-col items-center">
-            {!session ? (
+            {session ? (
               <>
                 <div className="p-3 bg-white rounded-lg border border-gray-200">
                   <QRCodeCanvas
