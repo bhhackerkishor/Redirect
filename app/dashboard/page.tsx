@@ -144,7 +144,7 @@ export default function Dashboard() {
                 <div className="mt-4 text-center">
                   <p className="text-sm text-gray-500">Your personal link:</p>
                   <p className="font-medium text-blue-600">
-                    {process.env.NEXT_PUBLIC_BASE_URL}/r/{form.username}
+                    {process.env.NEXT_PUBLIC_BASE_URL}/r/{session.user?.name}
                   </p>
                   {form.defaultRedirect ? (
                     <p className="mt-2 text-sm text-gray-600 flex items-center justify-center">
