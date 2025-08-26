@@ -64,7 +64,7 @@ export default function Dashboard() {
           social: d?.links?.social || {},
           payment: d?.links?.payment || {},
           defaultRedirect: d?.defaultRedirect || "",
-          username: d?.username || session.user?.name,
+          username: session.user?.name,
         });
       } catch (err) {
         console.error(err);
