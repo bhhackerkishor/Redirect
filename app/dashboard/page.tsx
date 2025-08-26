@@ -17,7 +17,7 @@ import {
   CheckCircle2,
   XCircle
 } from "lucide-react";
-
+import { useSession } from "next-auth/react";
 import UpiInput from "@/components/UpiInput";
 
 interface RedirectData {
@@ -28,6 +28,7 @@ interface RedirectData {
 }
 
 export default function Dashboard() {
+  const { data: session }: any = useSession();
   const [data, setData] = useState<RedirectData | null>(null);
   const [form, setForm] = useState<RedirectData>({
     social: {},
@@ -63,7 +64,7 @@ export default function Dashboard() {
           social: d?.links?.social || {},
           payment: d?.links?.payment || {},
           defaultRedirect: d?.defaultRedirect || "",
-          username: d?.username || "",
+          username: d?.username || session.user?.name,
         });
       } catch (err) {
         console.error(err);
@@ -130,11 +131,11 @@ export default function Dashboard() {
         {/* QR Code Section */}
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
           <div className="flex flex-col items-center">
-            {form.username ? (
+            {session.user ? (
               <>
                 <div className="p-3 bg-white rounded-lg border border-gray-200">
                   <QRCodeCanvas
-                    value={`${process.env.NEXT_PUBLIC_BASE_URL}/r/${form.username}`}
+                    value={`${process.env.NEXT_PUBLIC_BASE_URL}/r/${session.user?.name}`}
                     size={180}
                     level="H"
                     includeMargin
