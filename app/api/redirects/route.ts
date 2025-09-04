@@ -45,7 +45,7 @@ export async function POST(req: Request) {
       links: body.links || {},
       defaultRedirect: body.defaultRedirect,
       qrCodeUrl: body.qrCodeUrl,
-      username:user.name || "User",
+      username:user.username,
     });
   }
 
